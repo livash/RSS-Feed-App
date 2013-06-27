@@ -1,0 +1,8 @@
+<% feeds.each(function(feed) {%>
+
+<li>
+	<a href='<%= "#/feed/" + feed.id %>'>
+		<%= feed.escape('title') %>
+	</a>
+</li>
+<% });  %>
