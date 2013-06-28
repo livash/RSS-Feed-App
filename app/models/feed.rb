@@ -19,6 +19,10 @@ class Feed < ActiveRecord::Base
 
     feed
   end
+  
+  def as_json(options={})
+    super(options.merge(:include => :entries))
+  end
 
   def reload
     # reloads entries
