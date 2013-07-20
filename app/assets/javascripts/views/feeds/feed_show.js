@@ -6,7 +6,6 @@ NewReader.Views.FeedsShow = Backbone.View.extend({
   },
   
   render: function() {
-	  console.log("In the show feed ");
 	  console.log(this.model.attributes.entries);
 	  var renderedContent = this.template({ 
 		  feed: this.model,
@@ -18,10 +17,8 @@ NewReader.Views.FeedsShow = Backbone.View.extend({
   },
   
   refreshFeed: function(event) {
-	  console.log("refreshing!!!");
 	  var self = this;
 	  var id = $(event.target).data('id');
-	  console.log(id);
 	  var feed = NewReader.Store.feeds.findWhere({id: id});
 	  feed.fetch({
 		  success: function() {

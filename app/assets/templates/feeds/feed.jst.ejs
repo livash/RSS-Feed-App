@@ -5,7 +5,7 @@
 <button id="refresh" data-id="<%= feed.id %>">Refresh Feed!</button>
 <ul>
 <% entries.each(function(entry) { %>
-<li><a href="<%= entry.escape('link') %>">
+<li><a href="#feed/<%= feed.id %>/entry/<%= entry.id %>">
 	<%= entry.escape('title') %>	
 	</a>
 </li>

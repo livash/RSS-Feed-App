@@ -7,6 +7,7 @@ NewReader.Routers.Feeds = Backbone.Router.extend({
 	routes: {
 		"": "index",
 		"feed/:id": "show",
+		"feed/:feed_id/entry/:id": "entryShow"
 	},
 	
 	index: function() {
@@ -14,6 +15,14 @@ NewReader.Routers.Feeds = Backbone.Router.extend({
 		console.log(this.feeds);
 		indexView.collection = this.feeds;
 		this.$rootEl.html(indexView.render().$el);
+	},
+	
+	entryShow: function(feed_id, id) {
+		var feed = this.feeds.findWhere({id: parseInt(feed_id)});
+		var entry = feed.entries.findWhere({id: parseInt(id)});
+		var	entryView = new NewReader.Views.EntryShow();
+		entryView.model = entry;
+		this.$rootEl.html(entryView.render().$el);
 	},
 
 	show: function(id) {
